@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'fabric-loom' version '1.11-SNAPSHOT'
     id 'maven-publish'
     id "com.modrinth.minotaur" version "2.+"
 }
@@ -88,7 +88,7 @@ modrinth {
     versionType = "release"
     uploadFile = remapJar
     changelog = System.getenv("CHANGELOG_PATH") ? rootProject.file(System.getenv("CHANGELOG_PATH")).text : ""
-    gameVersions = (project.minecraft_version).split(";").toList()
+    gameVersions = project.supported_versions.split(";").toList()
     loaders = ["fabric", "quilt"]
     dependencies {
         required.project "BlossomLib"
