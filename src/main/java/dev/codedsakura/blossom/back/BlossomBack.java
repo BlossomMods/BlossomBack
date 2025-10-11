@@ -70,7 +70,7 @@ public class BlossomBack implements ModInitializer {
 
         var destination = teleportData.get(player.getUuid());
 
-        LOGGER.trace("back {} ({}) to {}", player.getGameProfile().getName(), player.getUuid(), destination);
+        LOGGER.trace("back {} ({}) to {}", player.getGameProfile().name(), player.getUuid(), destination);
 
         if (destination != null) {
             TeleportUtils.teleport(
@@ -93,7 +93,7 @@ public class BlossomBack implements ModInitializer {
 
         var destination = deathData.get(player.getUuid());
 
-        LOGGER.trace("back (death) {} ({}) to {}", player.getGameProfile().getName(), player.getUuid(), destination);
+        LOGGER.trace("back (death) {} ({}) to {}", player.getGameProfile().name(), player.getUuid(), destination);
 
         if (destination != null) {
             TeleportUtils.teleport(

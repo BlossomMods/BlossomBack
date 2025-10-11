@@ -18,6 +18,6 @@ class PlayerDeathMixin {
         TeleportDestination deathPoint = new TeleportDestination(self);
         BlossomBack.DEATHS.put(self.getUuid(), deathPoint);
         BlossomBack.onPlayerDeathHook();
-        BlossomBack.LOGGER.info("{} ({}) died at {}", self.getGameProfile().getName(), self.getUuid(), deathPoint);
+        BlossomBack.LOGGER.info("{} ({}) died at {}", self.getGameProfile().name(), self.getUuid(), deathPoint);
     }
 }
