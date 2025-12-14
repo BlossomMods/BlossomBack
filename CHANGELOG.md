@@ -1,3 +1,7 @@
+# 2.1.12
+
+* Update to support 1.21.11
+
 # 2.1.11
 
 * Update to support 1.21.10

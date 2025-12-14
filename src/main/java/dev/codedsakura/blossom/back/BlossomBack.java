@@ -15,14 +15,14 @@ import dev.codedsakura.blossom.lib.text.TextUtils;
 import dev.codedsakura.blossom.lib.utils.CustomLogger;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.server.level.ServerPlayer;
 import org.apache.logging.log4j.core.Logger;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-import static net.minecraft.server.command.CommandManager.literal;
+import static net.minecraft.commands.Commands.literal;
 
 class BlossomLastDeath {
 }
@@ -65,12 +65,12 @@ public class BlossomBack implements ModInitializer {
                 .executes(this::runLastDeath));
     }
 
-    private int runBack(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
-        ServerPlayerEntity player = ctx.getSource().getPlayerOrThrow();
+    private int runBack(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
 
-        var destination = teleportData.get(player.getUuid());
+        var destination = teleportData.get(player.getUUID());
 
-        LOGGER.trace("back {} ({}) to {}", player.getGameProfile().name(), player.getUuid(), destination);
+        LOGGER.trace("back {} ({}) to {}", player.getGameProfile().name(), player.getUUID(), destination);
 
         if (destination != null) {
             TeleportUtils.teleport(
@@ -88,12 +88,12 @@ public class BlossomBack implements ModInitializer {
         return Command.SINGLE_SUCCESS;
     }
 
-    private int runLastDeath(CommandContext<ServerCommandSource> ctx) throws CommandSyntaxException {
-        ServerPlayerEntity player = ctx.getSource().getPlayerOrThrow();
+    private int runLastDeath(CommandContext<CommandSourceStack> ctx) throws CommandSyntaxException {
+        ServerPlayer player = ctx.getSource().getPlayerOrException();
 
-        var destination = deathData.get(player.getUuid());
+        var destination = deathData.get(player.getUUID());
 
-        LOGGER.trace("back (death) {} ({}) to {}", player.getGameProfile().name(), player.getUuid(), destination);
+        LOGGER.trace("back (death) {} ({}) to {}", player.getGameProfile().name(), player.getUUID(), destination);
 
         if (destination != null) {
             TeleportUtils.teleport(

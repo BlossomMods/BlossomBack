@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import dev.codedsakura.blossom.back.BlossomBack;
 import dev.codedsakura.blossom.lib.data.DataController;
 import dev.codedsakura.blossom.lib.teleport.TeleportUtils;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.server.level.ServerLevel;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class PlayerDeathData extends DataController<HashMap<UUID, TeleportUtils.TeleportDestination>> {
     private final Gson GSON = new GsonBuilder()
-            .registerTypeAdapter(ServerWorld.class, new ServerWorldSerializer())
+            .registerTypeAdapter(ServerLevel.class, new ServerWorldSerializer())
             .setPrettyPrinting()
             .serializeNulls()
             .disableHtmlEscaping()
